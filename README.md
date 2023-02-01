@@ -9,6 +9,7 @@
 ------
 
 - [get, post 차이점](https://github.com/dev-riley/frontend_interview/blob/master/CS/get%2C%20post%20%EC%B0%A8%EC%9D%B4%EC%A0%90.md)
+- [stack과 queue를 설명하시오.](https://github.com/dev-riley/frontend_interview/blob/master/CS/stack%EA%B3%BC%20queue.md)
 
 
 
