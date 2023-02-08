@@ -28,4 +28,14 @@ virutal DOM은 실제 DOM을 조작하는 게 아니라 메모리에 DOM을 추�
 
 1. 데이터가 업데이트 되면, 전체 UI를 Virtual DOM에 리렌더링함
 2. 이전 Virtual DOM에 있던 내용과 현재의 내용을 비교함(가상 돔끼리 비교)
-3. 바뀐 부분만 실제 DOM에 적용이 됨 (컴포넌트가 업데이트될 때, 레이아웃 계산이 한번만 이루어)
+3. 바뀐 부분만 실제 DOM에 적용이 됨 (컴포넌트가 업데이트될 때, 레이아웃 계산이 한번만 이루어 짐)
+
+
+
+출처  
+
+- https://dev-cini.tistory.com/10
+- https://dev-cini.tistory.com/11
+- https://devbirdfeet.tistory.com/219
+- https://brunch.co.kr/@eight-two-five/14
+
