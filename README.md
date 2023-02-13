@@ -29,6 +29,7 @@
 ------
 
 - [쿠키(cookie), 세션(session), 웹 스토리지(web storage)](https://github.com/dev-riley/frontend_interview/blob/master/frontend/cookie%2C%20session%2C%20web%20storage.md)
+- [JWT(JSON Web Token)](https://github.com/dev-riley/frontend_interview/blob/master/frontend/JWT(JSON%20Web%20Token).md)
 
 
 
@@ -38,3 +39,5 @@
 
 - [라이프 사이클 메서드(Life Cycle Method)](https://github.com/dev-riley/frontend_interview/blob/master/React/React%20Life%20Cyle%20Method.md)
 - [가상 돔(Virtual DOM)](https://github.com/dev-riley/frontend_interview/blob/master/React/Virtual%20Dom.md)
+- [리액트 렌더링 성능 최적화(React Rendering Performance Optimizer)](https://github.com/dev-riley/frontend_interview/blob/master/React/React%20Rendering%20performance%20optimizer.md)
+- [useMemo, useCallback](https://github.com/dev-riley/frontend_interview/blob/master/React/useMemo%2C%20useCallback.md)
