@@ -23,6 +23,8 @@
 - [이벤트 버블링(event bubbling), 이벤트 캡처링(event capturing)](https://github.com/dev-riley/frontend_interview/blob/master/javascript/event%20bubbling%2C%20event%20capturing.md)
 - [Promise, Callback, async & await](https://github.com/dev-riley/frontend_interview/blob/master/javascript/Promise%2C%20Callback%2C%20async%26await.md)
 - [this](https://github.com/dev-riley/frontend_interview/blob/master/javascript/this.md)
+- [불변성 유지(Immutability)](https://github.com/dev-riley/frontend_interview/blob/master/javascript/immutability.md)
+- [프로토타입(prototype)](https://github.com/dev-riley/frontend_interview/blob/master/javascript/prototype.md)
 
 
 
