@@ -2,7 +2,7 @@
 
 1. 브라우저는 캐싱된 DNS 기록들을 통해 www.google.com에 대응되는 IP주소가 있는지 확인한다.
 
-   DNS는 사람들이 웹사이트 주소에 쉽게 접속할 수 있게 매핑을 해주는 역할을 한다. 
+   DNS는 사람들이 웹사이트 주소에 쉽게 접속할 수 있게 매핑을 해주는 역할, 사람이 읽을 수 있는 도메인 이름을  IP주소로 변환하는 시스템이다. 
 
    브라우저는 DNS 기록을 4가지의 캐시에서 확인을 한다.
 
@@ -42,3 +42,5 @@ https://devjin-blog.com/what-happen-browser-search/
 https://velog.io/@eassy/www.google.com%EC%9D%84-%EC%A3%BC%EC%86%8C%EC%B0%BD%EC%97%90%EC%84%9C-%EC%9E%85%EB%A0%A5%ED%95%98%EB%A9%B4-%EC%9D%BC%EC%96%B4%EB%82%98%EB%8A%94-%EC%9D%BC
 
 https://leeph.tistory.com/39
+
+https://velog.io/@tnehd1998/%EC%A3%BC%EC%86%8C%EC%B0%BD%EC%97%90-www.google.com%EC%9D%84-%EC%9E%85%EB%A0%A5%ED%96%88%EC%9D%84-%EB%95%8C-%EC%9D%BC%EC%96%B4%EB%82%98%EB%8A%94-%EA%B3%BC%EC%A0%95
