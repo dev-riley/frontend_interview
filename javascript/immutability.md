@@ -7,12 +7,31 @@
 스프레드 문법을 사용해서 객체를 복사해야지 객체가 불변성을 유지할 수 있다. 하지만 스프레드 문법은 1레벨 깊이에서만 유효하게 동작하기 때문에 객체 내부의 객체의 불변성까지는 유지할 수 없다. 레벨 2 객체까지 불변성을 유지하려면 별도의 변수에 값을 재할당하고 넣어주는 번거로운 과정을 거쳐야 한다.
 
 2. map, filter, reduce 같은 기존 배열을 변경하지 않고 새로운 배열을 반환하는 메서드를 사용
-3. Object.assign 메서드를 사용하여 객체의 프로퍼티를 복사
+
+3. Object.assign 메서드를 사용하여 객체의 프로퍼티를 복사(얕은 복사)
+
+   객체를 병합하는 메서드로 sources들이 target에 병합되는 형식
+
+   ```javascript
+   Object.assign(target, ...sources)
+   const obj1 = {a};
+   const obj2 = {b};
+   const obj3 = {C};
+   const addObj = Object.assign({}, obj1, obj2, obj3)
+   console.log(addObj) // {a, b, c}
+   ```
+
 4. Object.freeze 불변 객체 만듬
 
-depth가 깊은 경우에는 loadash의 deep copy를 사용하면 됨.
+depth가 깊은 경우에는 loadash의 cloneDeep 함수를 사용하면 완벽하게 깊은 복사를 할 수 있음.
 
 사용 경험 : loadash의 deep copy와 JSON.strigify
+
+JSON.strigify 사용
+
+JSON.strigify 함수를 이용해서, Object 전체를 문자열로 변환 후, 다시 JSON.parse 함수를 이용해서 문자열을 Ojbect 형태로 변환한다. 그러면 문자열로 변환하는 순간 참조 값이 끊기기 때문에 새로운 Object로 만들어 사용할 수 있다. 하지만 JSON 함수는 엄청나게 리소스를 잡아먹는 함수인 만큼, 성능이 좋지 않은 부분을 고려해야 한다.
+
+게시글 CRUD => 사용자 정보를 업데이트 할 때, 만약 객체 안에 또 다른 객체가 들어있다면 얕은 복사로는 업데이트가 안되었을 것이다. 이럴 때 깊은 복사인 loadash의 deepcopy를 써서 깊은 depth까지 다 복사해 업데이트를 할 수 있었다. 
 
 리액트에서 불변성 유지가 중요하다. 
 
@@ -20,3 +39,6 @@ depth가 깊은 경우에는 loadash의 deep copy를 사용하면 됨.
 
 불변성을 유지하기 위해 위의 방법을 쓸 수도 있지만 immer라는 라이브러리를 통해 쉽게 불변성 관리를 할 수 있다.
 
+출처
+
+https://velog.io/@g0garden/JS-%EC%96%95%EC%9D%80%EB%B3%B5%EC%82%AC%EC%99%80-%EA%B9%8A%EC%9D%80%EB%B3%B5%EC%82%ACfeat.%EA%B9%8A%EC%9D%80%EB%B3%B5%EC%82%AC%EB%A5%BC-%EC%A0%9C%EB%8C%80%EB%A1%9C
