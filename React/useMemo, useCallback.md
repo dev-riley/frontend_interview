@@ -42,7 +42,9 @@ useCallback(fn, [deps])
 
 useCallback 또한 deps, 의존성이 있는 값이 변하면 fn에 등록된 함수를 반환하는 기능을 가지고 있다.
 
-그렇다면 useCallbakck은 언제 쓰일 수 있을까? 함수가 재생성 되는 것을 방지하기 위해 사용되는데, 다음 예제를 보자.
+보통 컴포넌트 내에서 함수를 정의하게 되면, 모든 단일 렌더에서 매번 동일하지만 고유한 함수를 생성하게 될 것이다. 매번 고유한 함수를 생성하게 된다면, 컴포넌트는 그전과 참조값이 변했다고 생각해 또 렌더링이 발생한다. 
+
+이럴때, useCallback()함수를 사용해 함수가 재생성 되는 것을 방지하는 것이다.
 
 **자식 컴포넌트에 props로 함수를 전달한 경우**
 
@@ -74,3 +76,49 @@ useCallback을 사용하지 않으면, name이 변경되어 리렌더링이 발�
 
 
 
+```javascript
+import React, { useState, useEffect } from "react";
+
+function Profile({ userId }) {
+  const [user, setUser] = useState(null);
+
+  const fetchUser = () =>
+    fetch(`https://your-api.com/users/${userId}`)
+      .then((response) => response.json())
+      .then(({ user }) => user);
+
+  useEffect(() => {
+    fetchUser().then((user) => setUser(user));
+  }, [fetchUser]);
+
+  // ...
+}
+```
+
+
+
+예를 들어, 컴포넌트에서 API를 호출하는 코드 fetchUser가 있을 때, useEffect를 사용해 fetchUser 함수가 변경될 때만 호출되는 코드가 있다. fetch를 통해 가져오고자 하는 리소스의 경로에는 userId라는 파라미터가 있다. 여기서 받아온 결과를 json화하고 그리고 데이터 중에 user를 useEffect() hook으로 setUser라는 setter함수에 저장을 해서 user값을 저장해주는 코드라고 하자.  fetchUser는 함수이기 때문에 userId값이 바뀌든 말든 컴포넌트가 랜더링 될 때마다 새로운 참조값으로 변경이 된다. 그러면 useEffect 함수가 호출되어 user상태 값이 바뀌고 그러면 다시 렌더링이 되고 그럼 또 다시 useEffect() 함수가 호출되는 악순환이 반복된다. 이와 같은 상황에서 useCallback() hook 함수를 이용하면 컴포넌트가 다시 랜더링되더라도 fetchUser 함수의 참조값을 동일하게 유지시킬 수 있다. 
+
+```javascript
+import React, { useState, useEffect } from "react";
+
+function Profile({ userId }) {
+  const [user, setUser] = useState(null);
+
+  const fetchUser = useCallback(
+    () =>
+      fetch(`https://your-api.com/users/${userId}`)
+        .then((response) => response.json())
+        .then(({ user }) => user),
+    [userId]
+  );
+
+  useEffect(() => {
+    fetchUser().then((user) => setUser(user));
+  }, [fetchUser]);
+
+  // ...
+}
+```
+
+따라서 의도했던 대로, useEffect()에 넘어온 함수는 userId 값이 변경되지 않는 한 재호출 되지 않게 된다.
